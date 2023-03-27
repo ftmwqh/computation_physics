@@ -16,20 +16,20 @@ PROGRAM Schrage
 
    x = real(z)/real(m)                      !随机数序列归一化为x
    l = 2                                    !每隔多少取一组随机数作为坐标
-!    open (unit=1, file='x_coordinate.txt')   !将产生的X坐标放入文件x_coordinate.txt
+   open (unit=1, file='x_coordinate.txt')   !将产生的X坐标放入文件x_coordinate.txt
 
-!    do i = 1, 99999999
-!       if (mod(i, l + 2) == 1) then
-!          write (1, *) x(i)
-!       end if
-!    end do
+   do i = 1, 999999
+      if (mod(i, l + 2) == 1) then
+         write (1, *) x(i)
+      end if
+   end do
 
-!    open (unit=2, file='y_coordinate.txt')   !将产生的Y坐标放入文件y_coordinate.txt
-!    do i = 1, 99999999
-!       if (mod(i, l + 2) == 1) then
-!          write (2, *) x(i + 1)
-!       end if
-!    end do                                 !已生成文件，由于数据多速度过慢，注释掉
+   open (unit=2, file='y_coordinate.txt')   !将产生的Y坐标放入文件y_coordinate.txt
+   do i = 1, 999999
+      if (mod(i, l + 2) == 1) then
+         write (2, *) x(i + 1)
+      end if
+   end do                              
 
 
 
