@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{multirow}
+\geometry{left=1.2cm,right=1.2cm,top=2cm,bottom=2cm}
+\title{\songti \zihao{2}\bfseries HW2第4题pdf函数}
+\titleformat*{\section}{\songti\zihao{4}\bfseries}
+\titleformat*{\subsection}{\songti\zihao{5}\bfseries}
+\renewcommand\thesection{\arabic{section}}
+\author{王启骅 PB20020580}
+\begin{document}
+	\maketitle
+	\section{题目}
+	设pdf函数满足关系式
+	\begin{center}
+		$ p'(x)=a\delta(x)+b\ exp(-cx) ,x\in[-1,1],a\neq 0$
+	\end{center}
+	讨论该函数性质并给出抽样方法。
+	\section{算法原理}
+对p'(x)积分得到
+\begin{equation}
+	p(x)=a\theta(x)-\frac{b}{c}\ exp(-cx)+Const
+\end{equation}
+
+
+再次积分得到
+	\begin{equation}
+		\xi=\int_{-1}^{x}p(x)dx=
+		\begin{cases}
+			\frac{b}{c^2}[exp(-cx)-exp(c)]+Const(x+1)& \text{,$x<0 $}\\
+			ax+\frac{b}{c^2}[exp(-cx)-exp(c)]+Const(x+1)& \text{,$x>0 $}
+		\end{cases}
+	\end{equation}
+	
+	
+	将其归一化，得到
+	\begin{equation}
+		Const=\frac{1-\frac{b}{c^2}[e^{-c}-e^c]-a}{2}
+	\end{equation}
+
+
+	该方程为一个超越方程，没有解析解，之后可以通过二分法反解方程(2)得到$ x(\xi) $，其中$ \xi $对应均匀分布在[0,1]的随机数列，产生的数列x即为所求的抽样序列。
+	
+	
+	或者通过舍选法，由于p(x)在[-1,1]上为有界函数，故一定有上界M,当a,b,c均>0时有$ M=a-\frac{b}{c}exp(-c)+Const $,并取
+	\begin{equation}
+		g(x,y)=\frac{1}{2M}
+	\end{equation}
+	\begin{equation}
+		\xi_1=\frac{\xi_x+1}{2}
+	\end{equation}
+	\begin{equation}
+		\xi_2=\frac{\xi_y}{M}
+	\end{equation}
+	其中$ \xi_1,\xi_2 $为在[0,1]上均匀分布的随机数序列，得到
+	\begin{equation}
+		\xi_x=2\xi_1-1
+	\end{equation}
+	\begin{equation}
+		\xi_y=M\xi_2
+	\end{equation}
+	判断随机数列中的每一点
+	\begin{equation}
+		M\xi_2\le p(2\xi_1-1)
+	\end{equation}
+	若成立，则取$ x=2\xi_1-1 $
+
+
+\end{document}
