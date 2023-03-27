@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{color}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	pdftitle={Overleaf Example},
+	pdfpagemode=FullScreen,
+}
+\geometry{left=1.2cm,right=1.2cm,top=2cm,bottom=2cm}
+\title{\songti \zihao{2}\bfseries HW9第14题Ising模型辩论}
+\titleformat*{\section}{\songti\zihao{4}\bfseries}
+\titleformat*{\subsection}{\songti\zihao{5}\bfseries}
+\renewcommand\thesection{\arabic{section}}
+\author{王启骅 PB20020580}
+\begin{document}
+	\maketitle
+	\section{题目}
+苏格拉底：诘问法是发现真理和明确概念的有效方法，请同学们以Ising经典自旋模型为例，
+论述相空间、Liouville定理、正则系综、Markov链等概念。
+
+
+学生A： 相空间是以 N 个粒子的位置坐标 q 和动量 p 展开的 6N 维空间。Ising模型中的
+Hamiltonian仅与自旋变量有关，与坐标和动量无关，$ \frac{\partial H}{\partial q}=\frac{\partial H}{\partial p}=0 $ ，因此： [$ \rho,H $]=0,即Liouville定理成立，$ \frac{d\rho}{dt}=[\rho,H]=0 $,几率密度分布因此为 H 的函数，因此它就是正则
+系综中的Boltzmann分布：$ \rho\propto\exp(-\beta H) $
+
+
+学生B： 非也。将自旋作为广义坐标，则同样得到自旋也是广义动量。相空间是以物理问
+题中的自由度为坐标展开的高维空间，对 N 个自旋体系展开的则是 N 维空间，空间的每
+一维坐标只有两个取值：+1和-1。如对 2 个自旋的相空间，代表点只能取(+1,+1)、(+1,-1)、
+(-1,+1)、(-1,-1) 这 4 个点。类似地，多自旋情况下代表点也只能位于多维相空间立方盒子
+的顶点上。不同于坐标 q 和动量 p 组成的相空间中代表点是流动的情况，现在这些代表点
+是与时间无关的，即密度不随时间改变的，因此 $ \frac{d\rho}{dt}=0 $。
+
+
+学生A： 我不能同意你的观点。如果相空间是这样的话，由于代表点只能取在顶点上，连
+几率密度分布本身都是离散的，而不是在该相空间中连续分布的。另外，$ \frac{d\rho}{dt}=\sum_{i}\frac{d\rho}{d\sigma_i}\frac{d\sigma_i}{dt} $
+，在无穷小的时间变化 dt 内，自旋的变化 $\Delta\sigma$则是有限的，不
+能得到Liouville定理。更何况系综理论推导时基于的也是 (q , p) 变量。
+
+
+学生C： （请以学生C的身份参与辩论）
+	\section{分析论证}
+\subsection{针对学生A1}
+\textcolor{blue}{相空间是以 N 个粒子的位置坐标 q 和动量 p 展开的 6N 维空间。}
+
+
+在经典力学研究粒子的运动中，我们确实使用广义坐标由位置坐标和动量展开作为6N维的空间。\\
+
+
+\textcolor{blue}{Ising模型中的
+	Hamiltonian仅与自旋变量有关，与坐标和动量无关，$ \frac{\partial H}{\partial q}=\frac{\partial H}{\partial p}=0 $}
+
+
+这句话在这里对于研究的对象有些不打清晰。我们需要注意的是在考虑分析一个力学系统时，我们所研究的对象还有其相对应的自由度。对于粒子运动我们确实以位置坐标和动量作为相空间的坐标。但是在Ising模型中，我们研究的是相变问题，而在相变中使用的坐标并不是粒子的运动相关的参量，而是粒子的自旋$\sigma$,对应的Hamilton量为
+\begin{equation}
+	E=-\sum_{\langle i,j\rangle=1}^{N}J_{ij}\sigma_i\sigma_j-\mu_BH\sum_{i=1}^{N}\sigma_i
+\end{equation}\\
+
+
+\textcolor{blue}{因此： [$ \rho,H $]=0,即Liouville定理成立，$ \frac{d\rho}{dt}=[\rho,H]=0 $,几率密度分布因此为 H 的函数，因此它就是正则
+	系综中的Boltzmann分布：$ \rho\propto\exp(-\beta H) $}
+
+
+这句话最后得到的结论$ \rho\propto\exp(-\beta H) $并没有问题，但是推导理由并不对。首先由于前述的取q、p为广义坐标的推导并不合理，由此并不能认为Liouville定理成立，而且更进一步由于并没有考虑$\rho$是否显含时间t,因此
+\begin{equation}
+	\frac{d\rho}{dt}=[\rho,H]+\frac{\partial\rho}{\partial t}=0
+	\label{eq:2}
+\end{equation}
+式(\ref{eq:2})也不一定成立。
+
+
+接下来对于下面一句推理进行分析。仅仅由于[$ \rho,H $]=0也不能简单推导出$\rho$为H的函数，而实际上$\rho$可以是任意与H对易的守恒量的函数。
+
+
+实际上导出$\rho$的形式是根据统计力学的分析，将体系的每一种自选构型状态$\alpha$,对应特定的围观能量$ E_{\alpha} $。当系统处于温度T的环境中经过很长一段时间，使系统通过与环境交换能量达到平衡态，最终在平衡态附近涨落，该状态正是由统计力学中的正则系统来描述的,处于某一自选构型的几率
+\begin{equation}
+	p_{\alpha}=\frac{\exp(-E_{\alpha}/k_BT)}{Z(T)},\ Z(T)=\sum_{\alpha}e^{(-E_{\alpha}/k_BT)}
+\end{equation}
+
+\subsection{针对学生B}
+\textcolor{blue}{非也。将自旋作为广义坐标，则同样得到自旋也是广义动量。}
+
+
+在这里自旋确实可以作为广义坐标，但是根据广义动量的定义$ p=\dfrac{dL}{d\dot{q}} $可得自旋并不能作为相空间的广义动量。由于自旋$ \sigma $的离散性，并无法定义对自旋的时间导数。\\
+
+
+\textcolor{blue}{相空间是以物理问
+	题中的自由度为坐标展开的高维空间，对 N 个自旋体系展开的则是 N 维空间，空间的每
+	一维坐标只有两个取值：+1和-1。如对 2 个自旋的相空间，代表点只能取(+1,+1)、(+1,-1)、
+	(-1,+1)、(-1,-1) 这 4 个点。类似地，多自旋情况下代表点也只能位于多维相空间立方盒子
+	的顶点上。}
+
+
+这句话的叙述是有道理的。在Ising模型的研究构建中，我们对于晶格点和晶格点附近的点阵的集合，去他们的自选$ \sigma_i $作为一组相空间的变量，$ \sigma_i\in\{+1,-1\} $，而对于所有自旋构成的组合$ \sigma $构成系统的自旋组态。因此对于N个点的晶体，一共有N维，相空间代表点可以选取在N个维度的+1或-1点上。\\
+
+
+\textcolor{blue}{不同于坐标 q 和动量 p 组成的相空间中代表点是流动的情况，现在这些代表点
+	是与时间无关的，即密度不随时间改变的，因此 $ \frac{d\rho}{dt}=0 $。}
+
+
+这句话的论断是不正确的。不能直接认定自旋代表点是与时间无关。尽管这些代表点分立的位于相空间中，但是在演化过程中每个晶格点本身的自旋$ \sigma_i $会因为交互能和磁场的作用导致在+1和-1之间来回变化。即使最终达到平衡态，自旋构型也会在平衡态的附近涨落。因此在每一次各个晶格点的自旋发生变化后，系统的密度$\rho$可能会发生变化。所以不能认为$ \dfrac{d\rho}{dt}=0 $。
+
+\subsection{针对学生A2}
+\textcolor{blue}{我不能同意你的观点。如果相空间是这样的话，由于代表点只能取在顶点上，连
+	几率密度分布本身都是离散的，而不是在该相空间中连续分布的。}
+
+
+首先相空间取点和几率密度分布函数都是离散的是正确的。但是这并不会给我们在相空间中对模型的分析造成问题，也就是它的离散性与相空间并不矛盾。而且尽管几率密度分布函数是离散的，但可以通过将其乘以Delta函数的方式将其连续化
+\begin{equation}
+	\rho=\sum_{\alpha}p_{\alpha}\delta(\sigma-\sigma_{\alpha})
+\end{equation}
+其中$ \sigma_{\alpha} $代表某一特定自旋构型，$ p_{\alpha} $为处于该构型的概率。当对自旋空间进行积分后即可得到位于某一特定范围内自旋构型的概率，该式就是自旋空间下的概率密度分布函数。\\
+
+
+\textcolor{blue}{另外，$ \frac{d\rho}{dt}=\sum_{i}\frac{d\rho}{d\sigma_i}\frac{d\sigma_i}{dt} $
+	，在无穷小的时间变化 dt 内，自旋的变化 $\Delta\sigma$则是有限的，不
+	能得到Liouville定理。}
+
+
+的确由于$ \sigma $是离散取值的，所以每次的变化$ \Delta\sigma $也是有限的变化，但是实际上Ising模型进行模拟的过程中所用的时间并不是普遍意义上的时间，而是每次模拟的间隔步长。在Ising模型中，认为系统每隔一个时间步长会发生一次变化，并且根据变化的相对概率选择接受或者拒绝该变化。由此可见在Ising模型中并没有使用到无穷小时间下自旋变化的概念。并且当所研究的对象是数量足够多的晶格时，整体的构型可以认为是宏观变量，在无穷小时间下是连续变化的，可以由此得到正确的Liouville方程。\\
+
+
+\textcolor{blue}{更何况系综理论推导时基于的也是 (q , p) 变量。}
+
+
+这句话有些过于拘泥僵化了，我们在研究物理问题的时候最首要的就是赵青楚物理对象，需要根据研究对象的不同，考虑不同的研究变量和体系。当我们在最初研究系综理论时，由于是在研究气体分子的热力学关系，能量与分布与气体分子的运动，空间位置有关，所以我们使用q，p作为像空间坐标。但是在我们研究的相变问题中，我们考虑的晶格体系的能量是与自旋有关的，我们相应的也需要更换使用的广义坐标。在这里实际上空间坐标和动量是被冻结的，认为与系统无关。因此我们依旧基于(q,p)研究Ising模型是不合理的。
+	\section{结论}
+	在研究Ising模型时，由于该模型与我们之前考虑的气体分子系综模型不同，哈密顿量是受到变量自旋$ \sigma $的控制，我们需要将之前所使用的相空间推广得到新的理论。实际上我们在这里可以是认为将有关热力学的参量从哈密顿量中省略了，因为我们研究的系统处于一定的有限温度下，可以认为除自旋以外的其他参量并不作为影响系统能量的变量，而只把自旋考虑在哈密顿量中。当系统演化达到热平衡情况下，根据Liouville定理，系统属于正则系综，$\rho$是哈密顿量的函数，而在从初态到热平衡态的演化过程中，我们使用了细致平衡条件进行Metropolis方法抽样得到了Markov链模拟。
+\end{document}
