@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../C_Projects/.idea/C_Projects.iml" filepath="$PROJECT_DIR$/../C_Projects/.idea/C_Projects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../py_projects/bimetal_vib/.idea/bimetal_vib.iml" filepath="$PROJECT_DIR$/../py_projects/bimetal_vib/.idea/bimetal_vib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/computation_physics_HW.iml" filepath="$PROJECT_DIR$/.idea/computation_physics_HW.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../py_projects/picture_confocal_micro/.idea/picture.iml" filepath="$PROJECT_DIR$/../py_projects/picture_confocal_micro/.idea/picture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../pythonProject/.idea/pythonProject.iml" filepath="$PROJECT_DIR$/../pythonProject/.idea/pythonProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../py_projects/solid_state_physics/.idea/solid_state_physics.iml" filepath="$PROJECT_DIR$/../py_projects/solid_state_physics/.idea/solid_state_physics.iml" />
+    </modules>
+  </component>
+</project>
